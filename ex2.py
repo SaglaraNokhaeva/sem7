@@ -12,8 +12,9 @@ consonant = 'бвгджзйкдмнлнпрстфхцчшщъь'
 a = random.randint(4, 7)
 v = random.randint(1, a-2)
 s = random.sample(vowel, a) + random.sample(consonant, a-v)
+random.shuffle(s)
 
+print(''.join(s).title())
 
-print(x)
-print(y)
-print(s)
+with open('test.txt', 'w', encoding='utf-8') as f:
+    f.write(''.join(s).title())
