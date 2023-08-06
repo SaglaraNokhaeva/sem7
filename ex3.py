@@ -11,4 +11,11 @@
 # ✔ При достижении конца более короткого файла,
 # возвращайтесь в его начало.
 
-def file_modifier():
+
+names_size = len(list(1 for _ in open('names.txt')))
+numbers_size = len(list(1 for _ in open('numbers.txt')))
+count = max(names_size, numbers_size)
+while count > 0:
+    with open('names.txt', 'r') as names, open('numbers.txt', 'r') as numbers:
+        names_str = names.read()
+        numbers_str = numbers.read()
