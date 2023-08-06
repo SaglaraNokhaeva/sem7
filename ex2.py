@@ -16,5 +16,5 @@ random.shuffle(s)
 
 print(''.join(s).title())
 
-with open('test.txt', 'a', encoding='utf-8') as f:
+with open('names.txt', 'a', encoding='utf-8') as f:
     f.write(''.join(s).title()+'\n')
