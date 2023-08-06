@@ -19,10 +19,10 @@ with open('res.txt', 'a', encoding='utf-8') as res, \
         open('names.txt', 'r', encoding='utf-8') as names, \
         open('numbers.txt', 'r', encoding='utf-8') as numbers:
     names_str = itertools.cycle(names.readlines())
-    example_str = itertools.cycle(numbers.readlines())
+    numbers_str = itertools.cycle(numbers.readlines())
 
     for i in range(count):
-        number_str1, number_str2 = next(example_str).split('|')
+        number_str1, number_str2 = next(numbers_str).split('|')
         prod = float(number_str1) * float(number_str2)
         if prod < 0:
             res.write(f'{next(names_str).strip().lower()} {abs(prod)}\n')
