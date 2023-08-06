@@ -15,19 +15,18 @@
 names_size = len(list(1 for _ in open('names.txt')))
 numbers_size = len(list(1 for _ in open('numbers.txt')))
 count = max(names_size, numbers_size)
-while count > 0:
-    with open('names.txt', 'r', encoding='utf-8') as names, open('numbers.txt', 'r') as numbers:
-        names_str = names.readline()
+with open('names.txt', 'r', encoding='utf-8') as names, \
+        open('numbers.txt', 'r') as numbers, \
+        open('result.txt', 'r') as res:
+    names_str = names.readline()
+    while count > 0:
         # print(type(names_str))
         numbers_str = numbers.readline()
         # print(numbers_str)
         number_one, number_two = numbers_str.split('|')
         prod = int(number_one) * float(number_two)
         if prod < 0:
-            with open('names.txt', 'r', encoding='utf-8') as names, \
-                    open('numbers.txt', 'r') as numbers:
-                names_str = names.readline()
-            names_str.lower()
-
-
+            res.write(f'{names_str.lower()} {abs(prod)}\n')
+        else:
+            res.write(f'{names_str.upper()} {round(prod)}\n')
     count -=1
