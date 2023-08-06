@@ -10,23 +10,21 @@
 # сколько в более длинном файле.
 # ✔ При достижении конца более короткого файла,
 # возвращайтесь в его начало.
-
+import itertools
 
 names_size = len(list(1 for _ in open('names.txt')))
-numbers_size = len(list(1 for _ in open('numbers.txt')))
-count = max(names_size, numbers_size)
-with open('names.txt', 'r', encoding='utf-8') as names, \
-        open('numbers.txt', 'r') as numbers, \
-        open('result.txt', 'r') as res:
-    names_str = names.readline()
-    while count > 0:
-        # print(type(names_str))
-        numbers_str = numbers.readline()
-        # print(numbers_str)
-        number_one, number_two = numbers_str.split('|')
-        prod = int(number_one) * float(number_two)
+nums_size = len(list(1 for _ in open('numbers.txt')))
+count = max(nums_size, names_size)
+with open('res.txt', 'a', encoding='utf-8') as res, \
+        open('names.txt', 'r', encoding='utf-8') as names, \
+        open('numbers.txt', 'r', encoding='utf-8') as numbers:
+    names_str = itertools.cycle(names.readlines())
+    example_str = itertools.cycle(numbers.readlines())
+
+    for i in range(count):
+        number_str1, number_str2 = next(example_str).split('|')
+        prod = float(number_str1) * float(number_str2)
         if prod < 0:
-            res.write(f'{names_str.lower()} {abs(prod)}\n')
+            res.write(f'{next(names_str).strip().lower()} {abs(prod)}\n')
         else:
-            res.write(f'{names_str.upper()} {round(prod)}\n')
-    count -=1
+            res.write(f'{next(names_str).strip().upper()} {round(prod)}\n')
