@@ -11,4 +11,4 @@ def input_number (count, filename):
             file.write(f'{randint(-1000,1000)}|{uniform(-1000,1000)} \n')
 
 
-input_number(5, 'example.txt')
+input_number(5, 'numbers.txt')
