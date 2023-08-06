@@ -19,8 +19,9 @@ with open('res.txt', 'a', encoding='utf-8') as res, \
         open('names.txt', 'r', encoding='utf-8') as names, \
         open('numbers.txt', 'r', encoding='utf-8') as numbers:
     names_str = itertools.cycle(names.readlines())
+    # print(names_str)
     numbers_str = itertools.cycle(numbers.readlines())
-
+    # print(numbers_str)
     for i in range(count):
         number_str1, number_str2 = next(numbers_str).split('|')
         prod = float(number_str1) * float(number_str2)
