@@ -17,8 +17,17 @@ numbers_size = len(list(1 for _ in open('numbers.txt')))
 count = max(names_size, numbers_size)
 while count > 0:
     with open('names.txt', 'r', encoding='utf-8') as names, open('numbers.txt', 'r') as numbers:
-        names_str = names.read()
-        print(type(names_str))
-        numbers_str = numbers.read()
-        print(numbers_str)
+        names_str = names.readline()
+        # print(type(names_str))
+        numbers_str = numbers.readline()
+        # print(numbers_str)
+        number_one, number_two = numbers_str.split('|')
+        prod = int(number_one) * float(number_two)
+        if prod < 0:
+            with open('names.txt', 'r', encoding='utf-8') as names, \
+                    open('numbers.txt', 'r') as numbers:
+                names_str = names.readline()
+            names_str.lower()
+
+
     count -=1
